@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<section>
+<div class="container mt-5  mb-5 d-flex justify-content-center" style="width: 500px; height: auto;">
+    <div class="card" style="width: 18rem">
+        <img class="card-img-top" src="{{object.image_of_van.url}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{object.van_name}}</h5>
+                <p class="card-text">{{object.description}}</p>
+                {% if user.is_superuser%}
+                <a href="{% url 'editvan' object.id %}" class="btn btn-success d-flex justify-content-center">Уреди</a><br/>
+                {% endif %}
+                {% if not user.is_superuser %}
+                <a href="{% url 'rent' object.id %}" class="btn btn-success d-flex justify-content-center">Изнајми</a><br/>
+                <a href="{% url 'makereservation' object.id%}" class="btn btn-success d-flex justify-content-center">Резервирај</a><br/>
+                {% endif %}
+            </div>
+    </div>
+</div>
+</section>
+
+
+{% endblock content %}

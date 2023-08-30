@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class="conatiner d-flex justify-content-center align-items-center">
+        <div class="container" style="width: 500px; height:auto; margin-top: 100px; margin-bottom: 100px; background-color: #ccffcc; border-radius: 25px;">
+            <h2 class="text-center" style="color: #008000;">{% if id %} Уреди {% else %} Новo {% endif %} возило </h2>
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <div class="container d-flex justify-content-center">
+                <input type="submit" class="btn btn-success mb-5" style="width: 100px;"  value="Внеси"/>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock content %}

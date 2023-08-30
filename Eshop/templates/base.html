@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Vans</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <style>
+        .header{
+            display: flex;
+            height: 200px;
+            background-image: url("https://wallpaperaccess.com/full/267434.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+         }
+
+        .navcontainer{
+            height: 60px;
+            align-self: center ;
+        }
+        .navcontainer > div > div > ul > li > a {
+            font-weight: 600;
+            color: white;
+            letter-spacing: 1px;
+            font-family: sans-serif;
+            text-decoration: none;
+        }
+        .navcontainer > div > div > ul > li  {
+            padding-top: 8px;
+        }
+        .navcontainer > div > div > ul > li > a:hover {
+            color: #008000
+        }
+    
+        .navcontainer > div > div > ul > li > a:active {
+            color: #008000
+        }
+        .navcontainer > div > div > ul > li:hover {
+            border-radius: 15px 15px 0px 0px;
+            background-color: #b3ffb3;
+        }
+        .underline-nav{
+            width: 450px;
+            height: 10px;
+            background-color: #b3ffb3 ;
+        }
+        .menu-footer ul{
+            margin-top: 20px;
+            margin-left: 100px;
+        }
+        
+        .menu-footer ul li {
+            padding: 10px;
+        }
+        .menu-footer ul li a {
+            color: white;
+            text-decoration: none;
+
+        }
+    </style>
+    </head>
+    
+<body>
+    <header class="conatiner header">
+    <div class="container navcontainer">
+        <div class="row">
+        <div class="col">
+        <ul class="nav d-flex justify-content-center">
+            <li class="nav-item d-flex">
+                <a class="nav-link" aria-current="page" href="{% url 'vans' %}">Дома</a>
+            </li>
+            <li class="nav-item d-flex">
+                <a class="nav-link" aria-current="page" href="{% url 'contact' %}">Контакт</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item d-flex">
+                <a class="nav-link" aria-current="page" href="{% url 'logout' %}">Одјави се</a>
+            </li>
+            {% else %}
+            <li class="nav-item d-flex">
+                <a class="nav-link" aria-current="page" href="{% url 'signin' %}">Регистрирај се</a>
+            </li>
+                <li class="nav-item d-flex">
+                    <a class="nav-link" aria-current="page" href="{% url 'login' %}">Најави се</a>
+                </li>
+            {% endif %}
+            
+            
+        </ul>
+        <div class="conatiner d-flex justify-content-center align-items-center">
+        <div class="underline-nav">
+
+        </div>
+    </div>
+        
+        </div>
+        </div>
+    </div>
+</header>
+<div class="conatiner">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{message}}</strong>
+              </div>
+        {% endfor %}
+    {% endif %}
+
+</div>
+
+
+    {% block content %}
+    {% endblock content %}
+
+<section style="height: 200px; background-color: #1d2b0b;">
+        <footer>
+        <div class="conatiner">
+            <div class="row">
+            <div class="col logo-footer d-flex justify-content-center align-items-center">
+                <img src="../../media/image/icon.png">
+
+            </div>
+            <div class="col menu-footer">
+                <ul>
+                    <li>
+                        <a aria-current="page" href="{% url 'vans' %}">Дома</a>
+                    </li>
+                    <li>
+                        <a aria-current="page" href="{% url 'contact' %}">Контакт</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a  aria-current="page" href="{% url 'logout' %}">Одјави се</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a aria-current="page" href="{% url 'signin' %}">Регистрирај се</a>
+                    </li>
+                    <li>
+                        <a aria-current="page" href="{% url 'login' %}">Најави се</a>
+                    </li>
+                    {% endif %}
+            
+                </ul>
+
+            </div>
+            <div class="col contact-footer">
+                <div class="conatiner">
+                    <div class="row"><p class="text-center" style="color: white;" >АДРЕСА</p></div>
+                    <div class="row"><p class="text-center" style="color: white;" >ул. Руѓер Бошковиќ 16, Пoштенски Фах 393,</p></div>
+                    <div class="row"><p class="text-center" style="color: white;" >1000, Скопје, Република Северна Македонија</p></div>
+                    <div class="row"><p class="text-center" style="color: white;" >КОНТАКТ:</p></div>
+                    <div class="row"><p class="text-center" style="color: white;" >contact@finki.ukim.mk</p></div>
+                 </div>
+
+            </div>
+        </div>
+    </div>
+        </footer>
+</section>
+    
+</body>
+</html>
+    

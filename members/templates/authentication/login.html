@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="container d-flex justify-content-center align-items-center" style=" width: auto;">
+        <div class="container mt-5 mb-5" style="width: 500px; height: 350px; background-color:#ccffcc;border-radius: 25px;">
+            <h2 class="text-center" style="color: #008000; padding: 10px;">Најави се </h2>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                    <label for="exampleInputEmail1" >Електронска адреса / Корисничко име</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="exampleInputPassword1">Лозинка</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                  </div>
+                  <div class="container">
+                    <div class="row">
+                        <div class="col text">
+                            <p>Не си регистриран?</p>
+                        </div>
+                        <div class="col text-end">
+                            <a href="{% url 'signin' %}">Регистрирај се</a>
+                        </div>
+                    </div>
+                
+                  </div>
+                <div class="conatiner d-flex justify-content-center">
+                <input type="submit" class="btn btn-success" style="width: 100px;" value="Внеси"/>
+                </div>
+
+            </form>
+        </div>
+</section>
+{% endblock content %}

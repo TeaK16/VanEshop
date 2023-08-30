@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+        <div class="container mt-5" style="width: 500px; height: auto; margin-top: 100px; margin-bottom: 100px; background-color:#ccffcc; border-radius: 25px;">
+            {% if form.errors %}
+            <p>Невалидно пополнета форма!</p>
+            {% endif %}
+            <h2 class="text-center" style="color: #008000; padding: 10px;">Регистрирај се </h2>
+            <form method="post" action="{% url 'signin' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+               
+                <div class="container d-flex justify-content-center">
+                <input type="submit" class="btn btn-success " style="width: 100px; margin-bottom: 20px;" value="Внеси"/>
+                </div>
+            </form>
+        </div>
+</section>
+{% endblock content %}

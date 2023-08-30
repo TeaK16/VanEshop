@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5" style="height: auto;">
+    <div class="row">
+        {% for van in vans %}
+        <div class="col">
+        <div class="card mb-5" style="width: 18rem">
+            <img class="card-img-top" src="{{van.image_of_van.url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{van.van_name}}</h5>
+                    <p class="card-text">{{van.description}}</p>
+                    {% if user.is_authenticated %}
+                    <div class="conatiner d-flex justify-content-center">
+                        <a href="/vans/{{van.id}}" class="btn btn-success" style="margin-right: 10px;">Повеќе</a>
+                    {% if user.is_superuser%}    
+                        <a href="{% url 'deletevan' van.id %}" class="btn btn-danger">Избриши</a>
+                    {% endif %}
+                    </div>
+                    {% else %}
+                    {% endif %}
+                     <div class="container mt-5 d-flex justify-content-end">
+        
+                 </div>
+                </div>
+        </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% if user.is_authenticated and user.is_superuser%}
+    <div class="container mt-5 mb-5 justify-content-end">
+            <a href="{% url 'addvan' %}" class="btn btn-success addbtn" role="button" aria-pressed="true">Додади ставка</a>
+    </div>
+    {% else %}
+    <div class="container">
+        
+</div>
+    
+{% endif %}
+{% endblock content %}
+
