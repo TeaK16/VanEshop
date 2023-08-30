@@ -23,7 +23,7 @@ import Eshop.views
 import members.views
 
 urlpatterns = [
-    
+    path('/', Eshop.views.vans, name="vans"),
     path('vans/', Eshop.views.vans, name="vans"),
     path('contact/', Eshop.views.contact, name="contact"),
     path('vans/<int:id>',Eshop.views.vans_detail_view),
